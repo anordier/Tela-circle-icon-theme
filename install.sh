@@ -116,6 +116,11 @@ install_theme() {
     ln -sr "${STD_THEME_DIR}/24/panel"                                           "${THEME_DIR}/24/panel"
   fi
 
+  # Replace file manager icon with icon of appropriate color (default icon being blue)
+  if [ -n "${colorprefix}"  ]; then
+    cp -r "${SRC_DIR}"/src/colors-circle/color"${colorprefix}"/default-folder.svg   "${THEME_DIR}/scalable/apps/file-manager.svg"
+  fi
+
   if [ -n "${colorprefix}" ]; then
     install -m644 "${SRC_DIR}"/src/colors-16/color${colorprefix}/*.svg           "${THEME_DIR}/16/places"
   fi
